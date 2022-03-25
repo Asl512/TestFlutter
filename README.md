@@ -5,17 +5,15 @@
 - переход к детальной странице поста
 - обработчик ошибок при получении данных
 
-### Верстка на Reactjs
-- bd - mongoDB
-- framework - express
-- concurrently
-- express 
-- mongoose 
-- nodemon
-- react-router-dom
-- materialize-css
-- nouislider-react
+### Использованные библиотеки
+- equatable: ^2.0.3
+- either_dart: ^0.1.4
+- redux: ^5.0.0
+- flutter_redux: ^0.9.0
+- redux_thunk: ^0.4.0
+- dio: ^4.0.4
+- provider: ^6.0.2
 
 ## Ссылки
-- npm run server - запустить сервер
+- apk - https://disk.yandex.kz/d/F87Z7DSknsrWdw
 
