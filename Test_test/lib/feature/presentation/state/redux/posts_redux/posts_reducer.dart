@@ -12,13 +12,13 @@ PostsState postReducer(PostsState state, dynamic action){
 }
 
 Reducer<Widget> _postReducer = combineReducers([
-  TypedReducer<Widget,GetPostsWidgetAction>(_getPostWidgetAction),
+  TypedReducer<Widget,GetPostsWidgetAction>(_getPostWidgetReducer),
 ]);
 
 Reducer<Widget> _userReducer = combineReducers([
-  TypedReducer<Widget,GetUserWidgetAction>(_getUserWidgetAction),
+  TypedReducer<Widget,GetUserWidgetAction>(_getUserWidgetReducer),
 ]);
 
-Widget _getPostWidgetAction(Widget posts, GetPostsWidgetAction action) => action.widget;
+Widget _getPostWidgetReducer(Widget posts, GetPostsWidgetAction action) => action.widget;
 
-Widget _getUserWidgetAction(Widget user, GetUserWidgetAction action) => action.widget;
+Widget _getUserWidgetReducer(Widget user, GetUserWidgetAction action) => action.widget;

@@ -9,7 +9,7 @@ class GetUser{
 
   GetUser(this.userRepository);
 
-  Future<Either<Failure, UserEntity?>>call()async{
-    return await userRepository.getUser();
+  Future<Either<Failure, UserEntity?>>call(int id)async{
+    return await userRepository.getUser(id);
   }
 }

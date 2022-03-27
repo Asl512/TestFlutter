@@ -7,12 +7,9 @@ import '../../../core/error/exception.dart';
 import '../../../core/error/failure.dart';
 
 class UserDataRepository extends UserRepository {
-  final int id;
-  UserDataRepository({required this.id});
-
 
   @override
-  Future<Either<Failure, UserEntity?>> getUser()async{
+  Future<Either<Failure, UserEntity?>> getUser(int id)async{
     return await _getUser(() {
       return UserRemoteDataSourceImpl().getUser(id);
     });

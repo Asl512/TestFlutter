@@ -18,37 +18,37 @@ class GetUserWidgetAction{
 
 ThunkAction GetUserThunkAction(int id){
  return (Store store)async{
-   store.dispatch(GetUserWidgetAction(widget: loadingWidget()));
+   store.dispatch(GetUserWidgetAction(widget: _loadingWidget()));
 
-   dynamic response = await UserDataRepository(id: id).getUser();
+   dynamic response = await UserDataRepository().getUser(id);
 
    if(response is Right<Failure, UserEntity?>){
      if(response.right == null){
-       store.dispatch(GetUserWidgetAction(widget: emptyUser()));
+       store.dispatch(GetUserWidgetAction(widget: _emptyUser()));
      }else{
-       store.dispatch(GetUserWidgetAction(widget: getUserWidgets(response.right)));
+       store.dispatch(GetUserWidgetAction(widget: _getUserWidgets(response.right)));
      }
    }else{
-     store.dispatch(GetUserWidgetAction(widget: errorWidgets()));
+     store.dispatch(GetUserWidgetAction(widget: _errorWidgets()));
    }
  };
 }
 
-Widget loadingWidget(){
+Widget _loadingWidget(){
   return const LoadingUserWidget();
 }
 
-Widget getUserWidgets(UserEntity? user){
+Widget _getUserWidgets(UserEntity? user){
   return UserWidget(
       margin: EdgeInsets.only(top: 10),
       user: user
   );
 }
 
-Widget errorWidgets(){
+Widget _errorWidgets(){
   return const UserReloadWidget();
 }
 
-Widget emptyUser(){
+Widget _emptyUser(){
   return const NotUserWidget();
 }
