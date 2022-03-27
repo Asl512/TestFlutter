@@ -6,6 +6,7 @@ import 'package:redux_thunk/redux_thunk.dart';
 import 'package:test_test/core/error/failure.dart';
 import 'package:test_test/feature/data/repositories/user_data_repository.dart';
 import 'package:test_test/feature/domin/entities/user/user_entity.dart';
+import 'package:test_test/feature/domin/use_cases/get_user.dart';
 import 'package:test_test/feature/presentation/widgets/user_widgets/loading_user_widget.dart';
 import 'package:test_test/feature/presentation/widgets/user_widgets/not_user_widget.dart';
 import 'package:test_test/feature/presentation/widgets/user_widgets/reload_user_widget.dart';
@@ -20,7 +21,7 @@ ThunkAction GetUserThunkAction(int id){
  return (Store store)async{
    store.dispatch(GetUserWidgetAction(widget: _loadingWidget()));
 
-   dynamic response = await UserDataRepository().getUser(id);
+   dynamic response = await GetUser(UserDataRepository()).call(id);
 
    if(response is Right<Failure, UserEntity?>){
      if(response.right == null){

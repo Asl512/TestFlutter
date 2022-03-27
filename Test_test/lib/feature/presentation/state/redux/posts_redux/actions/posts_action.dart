@@ -6,6 +6,7 @@ import 'package:redux_thunk/redux_thunk.dart';
 import 'package:test_test/core/error/failure.dart';
 import 'package:test_test/feature/data/repositories/posts_data_repository.dart';
 import 'package:test_test/feature/domin/entities/post_entity.dart';
+import 'package:test_test/feature/domin/use_cases/get_all_posts.dart';
 import 'package:test_test/feature/presentation/widgets/page_reload_widget.dart';
 import 'package:test_test/feature/presentation/widgets/loading_widget.dart';
 import 'package:test_test/feature/presentation/widgets/post_tab_widget.dart';
@@ -18,7 +19,7 @@ class GetPostsWidgetAction{
 ThunkAction GetPostsThunkAction() => (Store store)async{
   store.dispatch(GetPostsWidgetAction(widget: loadingWidget()));
 
-  dynamic response = await PostsDataRepository().getAllPosts();
+  dynamic response = await GetAllPosts(PostsDataRepository()).call();
 
   if(response is Right<Failure, List<PostEntity>>){
     store.dispatch(GetPostsWidgetAction(widget: getPostsWidgets(response.right)));
